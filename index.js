@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const marked = require('marked');
 const jsdom = require("jsdom");
@@ -78,6 +80,24 @@ function validateLinks(links){
   return Promise.all(linkPromises)
 }
 
+function createStats (links, validate){
+  const allLinks = links.map((link) => link.href)
+  const total = allLinks.length;
+  const unique = new Set(allLinks).size;
+  if(validate){
+    const broken = links.filter((link) => link.success === 'fail').length;
+    return {
+      total,
+      unique,
+      broken,
+    }
+  } 
+  return {
+    total,
+    unique,
+  }
+}
+
 
 function mdlinks(path, options) {
   return new Promise (function(resolve, reject) {
@@ -109,6 +129,10 @@ function init() {
   const options = createOptions(process.argv)
   const fileName = process.argv[2]
   mdlinks(fileName, options).then(links => {
+    if(options.stats){
+      const stats = createStats(links, options.validate);
+      return console.log(stats)
+    }
     console.log(links)
   });
 }
