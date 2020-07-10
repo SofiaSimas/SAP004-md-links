@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const mdlinks = require('./md-links')
+const chalk = require('chalk')
 
 function createStats (links, validate){
   const allLinks = links.map((link) => link.href)
@@ -30,10 +31,10 @@ function createOptions(arg){
 }
 
 function renderStats(stats) {
-  console.log(`Total: ${stats.total}`)
-  console.log(`Unique: ${stats.unique}`)
+  console.log(chalk.blueBright(`Total: ${stats.total}`));
+  console.log(chalk.greenBright(`Unique: ${stats.unique}`));
   if (stats.broken){
-    console.log(`Broken: ${stats.broken}`)
+    console.log(chalk.redBright(`Broken: ${stats.broken}`));
   }
 }
 
