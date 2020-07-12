@@ -38,6 +38,21 @@ function renderStats(stats) {
   }
 }
 
+function conditionalRender(link, property, validation){
+  if (validation){
+    return link[property]
+  }
+  return '';
+}
+
+function renderLinks(links, validate) {
+  const renderLink = (link) => {
+    console.log(`${link.file} ${link.href} ${conditionalRender(link, 'success', validate)} ${conditionalRender(link, 'statusCode', validate)} ${link.text}`)
+  }
+
+  links.forEach(renderLink)
+}
+
 function init() {
   const options = createOptions(process.argv)
   const fileName = process.argv[2]
@@ -46,7 +61,7 @@ function init() {
       const stats = createStats(links, options.validate);
       return renderStats(stats)
     }
-    console.log(links)
+    return renderLinks(links, options.validate)
   });
 }
 
