@@ -1,11 +1,43 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "javascript",
+    "markdown",
+    "node.js",
+    "jest"
+  ],
+  "author": "Sofia Dênis de Simas",
+  "license": "ISC",
   "bin": {
     "md-links": "index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SofiaSimas/SAP004-md-links.git"
+  },
   "dependencies": {
+    "chalk": "^4.1.0",
     "jsdom": "^16.2.2",
     "marked": "^1.1.0"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0",
+    "jest-nyancat-reporter": "^2.0.0"
+  },
+  "jest": {
+    "reporters": [
+      [
+        "jest-nyancat-reporter",
+        {
+          "suppressErrorReporter": false
+        }
+      ]
+    ]
   }
 }
