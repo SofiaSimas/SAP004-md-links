@@ -2,8 +2,7 @@ const fs = require('fs');
 const marked = require('marked');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const http = require('http')
-const https = require('https')
+const validateLink = require('./validate-link')
 
 function readFile(path){
   try {
@@ -11,8 +10,7 @@ function readFile(path){
     return data;
   }
   catch (err) {
-    console.error('Ocorreu um erro ao ler o arquivo');
-    console.log(err);
+    throw new Error('Ocorreu um erro ao ler o arquivo');
   }
   
 }
@@ -38,40 +36,6 @@ function parseLinks(links, file) {
   })
 }
 
-
-
-function validateLink(link){
-  return new Promise((resolve, reject) => {
-    if (link.href.toLowerCase().startsWith('http')){
-      let protocol = http;
-      if (link.href.toLowerCase().startsWith('https')){
-        protocol = https;
-      }
-      protocol.get(link.href, (res) => {
-        const { statusCode } = res;
-        let success
-        if (statusCode >= 200 || statusCode <=399) {
-          success = 'ok';
-        } else {
-          success = 'fail';
-        }
-        resolve({
-          ...link, 
-          statusCode,
-          success,
-        })
-      })
-    } else {
-      resolve({
-        ...link, 
-        statusCode: 400,
-        success:'fail',
-      })
-    }
-  })
-  
-}
-
 function validateLinks(links){
   const linkPromises = links.map(validateLink)
 
@@ -80,14 +44,18 @@ function validateLinks(links){
 
 function mdlinks(path, options) {
   return new Promise (function(resolve, reject) {
-    const fileContent = readFile(path)
-    const htmlContent = parseMdToHtml(fileContent)
-    const links = getLinks(htmlContent, path)
+    try {
+      const fileContent = readFile(path)
+      const htmlContent = parseMdToHtml(fileContent)
+      const links = getLinks(htmlContent, path)
 
-    if (options.validate){
-      validateLinks(links).then(result => resolve(result))
-    } else {
-      resolve(links);
+      if (options && options.validate){
+        validateLinks(links).then(result => resolve(result))
+      } else {
+        resolve(links);
+      }
+    } catch (error) {
+      reject(error)
     }
   })
 }
