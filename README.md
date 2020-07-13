@@ -38,7 +38,7 @@ O md-links é uma biblioteca que lê arquivos no formato [markdown(.md)](https:/
 Neste projeto você criará uma ferramenta de linha de comando (CLI) assim como a
 sua própria biblioteca (library) em JavaScript.
 
-## 3. Instalação
+## 3. Instalação ⭐️
 
 Para instalação global do projeto, execute no terminal:
 
@@ -74,6 +74,6 @@ md-links <path-to-file>
 
 ## 7. Autoria
 
-Desenvolvido por [Sofia Dênis de Simas](https://github.com/SofiaSimas), para o Bootcamp da [Laboratória](https://www.laboratoria.la/br)
+Desenvolvido com ♥️ por [Sofia Dênis de Simas](https://github.com/SofiaSimas), para o Bootcamp da [Laboratória](https://www.laboratoria.la/br)
 
 
