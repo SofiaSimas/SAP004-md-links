@@ -69,7 +69,7 @@ md-links <path-to-file>
 ## 6. Próximos passos
 
 * Aperfeiçoar os testes,
-*Implementar suporte para diretórios e os testes,
+* Implementar suporte para diretórios e os testes,
 * Hacker Edition.
 
 ## 7. Autoria
