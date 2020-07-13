@@ -47,7 +47,7 @@ function conditionalRender(link, property, validation){
 
 function renderLinks(links, validate) {
   const renderLink = (link) => {
-    console.log(`${link.file} ${link.href} ${conditionalRender(link, 'success', validate)} ${conditionalRender(link, 'statusCode', validate)} ${link.text}`)
+    console.log((`${chalk.cyan(link.file)} ${chalk.cyanBright(link.href)} ${conditionalRender(link, 'success', validate)} ${conditionalRender(link, 'statusCode', validate)} ${chalk.yellowBright(link.text)}`))
   }
 
   links.forEach(renderLink)
