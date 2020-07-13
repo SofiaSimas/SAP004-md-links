@@ -2,7 +2,6 @@ const mdLinks = require('../md-links');
 const expectedOutput = require('./mocks/expectedOutput')
 const expectedValidateOutput = require('./mocks/expectedValidateOutput')
 const validateLink = require('../validate-link');
-const mdlinks = require('../md-links');
 
 jest.mock('../validate-link')
 
