@@ -4,7 +4,7 @@
 
 * [1. Prefácio](#1-prefácio)
 * [2. Resumo do projeto](#2-resumo-do-projeto)
-* [3. Instalação](#3-instalação)
+* [3. Instalação ⭐️](#3-instalação)
 * [4. Funcionalidades](#4-funcionalidades)
 * [5. Considerações Técnicas](#5-considerações-técnicas)
 * [6. Próximos Passos](#6-próximos-passos)
@@ -50,7 +50,7 @@ Quando requisitada, a biblioteca necessita de alguns parâmetros, opcionais ou n
 
 Após a instalação, poderá utilizar path para a rota da pasta ou arquivo:
 
-md-links <path-to-file>
+md-links `<path-to-file>`
 
 * `options`: Um objeto com a seguinte propriedade:
   - `validate`:(Opcional) Para verificar o status
