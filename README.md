@@ -31,6 +31,8 @@ estatísticas.
 
 ## 2. Resumo do projeto
 
+<img src="./img/md-links.png">
+
 ### Biblioteca md-links
 
 O md-links é uma biblioteca que lê arquivos no formato [markdown(.md)](https://www.markdownguide.org/getting-started/) e retorna os links encontrados neles, apresentando, validações e estados se ainda desejar.
